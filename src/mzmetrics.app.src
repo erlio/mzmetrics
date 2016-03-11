@@ -1,0 +1,12 @@
+{application, mzmetrics,
+ [
+  {description, "Performant metric collection API"},
+  {vsn, "0.0.2"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { mzmetrics_app, []}},
+  {env, []}
+ ]}.
