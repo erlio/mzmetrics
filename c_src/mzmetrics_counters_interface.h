@@ -37,7 +37,7 @@ counter64_t capi_incr_counter(struct GrpCounter *counter, size_t offset);
 // offset of the counter in this group that needs to be decremented
 counter64_t capi_decr_counter(struct GrpCounter *counter, size_t offset);
 // offset of the counter in this group that needs to be updated
-counter64_t capi_update_counter(struct GrpCounter *counter, size_t offset, int val);
+counter64_t capi_update_counter(struct GrpCounter *counter, size_t offset, int64_t val);
 // getval for counters
 counter64_t capi_getval_counter(struct GrpCounter *counter, size_t offset);
 // getval & reset for counters

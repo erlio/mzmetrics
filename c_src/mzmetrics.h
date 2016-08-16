@@ -32,7 +32,7 @@ void metrics_deinit(void);
 counter64_t metrics_incr_counter(struct GrpCounter *counter, unsigned int id);
 counter64_t metrics_decr_counter(struct GrpCounter *counter, unsigned int id);
 counter64_t metrics_update_counter(struct GrpCounter *counter,
-                                    unsigned int key, int val);
+                                    unsigned int key, int64_t val);
 counter64_t metrics_get_counter_value(struct GrpCounter *counter, unsigned int id);
 counter64_t metrics_reset_counter_value(struct GrpCounter *counter, unsigned int id);
 struct GrpCounter* metrics_alloc_counter(size_t num);

@@ -69,7 +69,7 @@ void capi_free_counter(struct GrpCounter *gcounter)
 }
 
 // offset of the counter in this group that needs to be updated
-counter64_t capi_update_counter(struct GrpCounter *gcounter, size_t offset, int val)
+counter64_t capi_update_counter(struct GrpCounter *gcounter, size_t offset, int64_t val)
 {
     if (val > 0)
         return __atomic_add_fetch(gcounter->counter + mycpu() *

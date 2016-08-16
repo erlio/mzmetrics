@@ -10,7 +10,7 @@ void metrics_deinit(void)
     capi_deinit_counters();
 }
 
-counter64_t metrics_update_counter(struct GrpCounter *counter, unsigned int key, int val)
+counter64_t metrics_update_counter(struct GrpCounter *counter, unsigned int key, int64_t val)
 {
     return capi_update_counter(counter, key, val);
 }
