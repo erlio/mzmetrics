@@ -192,9 +192,9 @@ static ERL_NIF_TERM metrics_alloc_resource_nif(ErlNifEnv* env, int argc,
 static ERL_NIF_TERM metrics_update_resource_counter_nif(ErlNifEnv* env, int argc,
                                             const ERL_NIF_TERM argv[])
 {
-    int ret;
+    uint64_t ret;
     unsigned int key;
-    int val;
+    int64_t val;
     struct CounterResource *resource = NULL;
     if (!enif_get_resource(env, argv[0], my_metrics_module(env).res_type,
                             (void**) &resource))
@@ -203,7 +203,7 @@ static ERL_NIF_TERM metrics_update_resource_counter_nif(ErlNifEnv* env, int argc
 	    return enif_make_badarg(env);
     if (key >= resource->counter->num_cnt)
 	    return enif_make_badarg(env);
-    if (!enif_get_int(env, argv[2], &val))
+    if (!enif_get_int64(env, argv[2], &val))
 	    return enif_make_badarg(env);
     ret = metrics_update_counter(resource->counter, key, val);
     return enif_make_uint64(env, ret);
@@ -212,7 +212,7 @@ static ERL_NIF_TERM metrics_update_resource_counter_nif(ErlNifEnv* env, int argc
 static ERL_NIF_TERM metrics_decr_resource_counter_nif(ErlNifEnv* env, int argc,
                                             const ERL_NIF_TERM argv[])
 {
-    int ret;
+    uint64_t ret;
     unsigned int key;
     struct CounterResource *resource = NULL;
     if (!enif_get_resource(env, argv[0], my_metrics_module(env).res_type,
@@ -229,7 +229,7 @@ static ERL_NIF_TERM metrics_decr_resource_counter_nif(ErlNifEnv* env, int argc,
 static ERL_NIF_TERM metrics_incr_resource_counter_nif(ErlNifEnv* env, int argc,
                                             const ERL_NIF_TERM argv[])
 {
-    int ret;
+    uint64_t ret;
     unsigned int key;
     struct CounterResource *resource = NULL;
     if (!enif_get_resource(env, argv[0], my_metrics_module(env).res_type,
@@ -247,7 +247,7 @@ static ERL_NIF_TERM metrics_incr_resource_counter_nif(ErlNifEnv* env, int argc,
 static ERL_NIF_TERM metrics_get_resource_counter_nif(ErlNifEnv* env, int argc,
                                         const ERL_NIF_TERM argv[])
 {
-    int ret;
+    uint64_t ret;
     unsigned int key;
     struct CounterResource *resource = NULL;
     if (!enif_get_resource(env, argv[0], my_metrics_module(env).res_type,
@@ -265,7 +265,7 @@ static ERL_NIF_TERM metrics_get_resource_counter_nif(ErlNifEnv* env, int argc,
 static ERL_NIF_TERM metrics_reset_resource_counter_nif(ErlNifEnv* env, int argc,
                                         const ERL_NIF_TERM argv[])
 {
-    int ret;
+    uint64_t ret;
     unsigned int key;
     struct CounterResource *resource = NULL;
     if (!enif_get_resource(env, argv[0], my_metrics_module(env).res_type,
