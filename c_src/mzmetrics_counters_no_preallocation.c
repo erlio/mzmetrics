@@ -3,7 +3,7 @@
 #define _DEFAULT_SOURCE
 #include <sched.h>
 #endif
-#include <cpuid.h>
+/* #include <cpuid.h> */
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdint.h>
@@ -33,14 +33,14 @@ void capi_deinit_counters(void)
 int mycpu(void)
 {
 #ifdef PCPU_COUNTERS
-#ifdef __linux__
+/* #ifdef __linux__ */
     return sched_getcpu();
-#else
-    unsigned int eax, ebx, ecx, edx;
-    if (!__get_cpuid(1, &eax, &ebx, &ecx, &edx))
-        return 0;
-    return 0;
-#endif
+/* #else */
+/*     unsigned int eax, ebx, ecx, edx; */
+/*     if (!__get_cpuid(1, &eax, &ebx, &ecx, &edx)) */
+/*         return 0; */
+/*     return 0; */
+/* #endif */
 #else
     return 0;
 #endif
